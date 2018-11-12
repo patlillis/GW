@@ -1,0 +1,56 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
+body {
+  background: #111;
+}
+
+.title-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0;
+}
+
+.title {
+  max-height: 100px;
+}
+
+.album-art-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 25px;
+}
+
+.album-art {
+  max-width: 600px;
+  width: 100%;
+}
+
+.link-wrapper {
+  /* position: absolute; */
+  padding: 30px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  text-align: center;
+  margin: 30px 20px;
+}
+
+.link-icon {
+  color: white;
+  font-size: 50px;
+}
+
+.link:hover .link-icon {
+  text-shadow: #f22658 5px 5px;
+}
