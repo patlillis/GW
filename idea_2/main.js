@@ -1,94 +1,74 @@
-const player = document.getElementById('player');
-const playButton = document.getElementById('play-button');
-const pauseButton = document.getElementById('pause-button');
-const loadingIndicator = document.getElementById('loading-indicator');
-const songTitle = document.getElementById('song-title');
-const progressBar = document.getElementById('song-progress-bar');
+const player = document.getElementById("player");
+const playButton = document.getElementById("play-button");
+const pauseButton = document.getElementById("pause-button");
+// const loadingIndicator = document.getElementById("loading-indicator");
+const songTitle = document.getElementById("song-title");
+const progressBar = document.getElementById("song-progress-bar");
 
-let progress = 0;
-let targetProgress = 0;
-let isPlaying = false;
-let progressBarUpdateHandle;
+// Handle clicking on "Play" button.
+playButton.addEventListener("click", startPlayback);
 
-playButton.addEventListener('click', () => {
-  startPlayback();
-});
+// Handle clicking on "Pause" button.
+pauseButton.addEventListener("click", pausePlayback);
 
-pauseButton.addEventListener('click', () => {
-  pausePlayback();
-});
+// Handle pressing the spacebar to toggle playback.
+document.addEventListener("keypress", e => {
+  if (e.key !== " ") return;
 
-player.addEventListener('ended', () => {
-  pausePlayback();
-  songTitle.classList.add('hidden');
-});
-
-player.addEventListener('timeupdate', () => {
-  targetProgress = player.currentTime / player.duration;
+  if (player.paused) {
+    startPlayback();
+  } else {
+    pausePlayback();
+  }
 });
 
 function startPlayback() {
-  playButton.classList.add('hidden');
-  loadingIndicator.classList.add('hidden');
-  pauseButton.classList.remove('hidden');
-  player.play();
-  isPlaying = true;
+  playButton.classList.add("hidden");
+  // loadingIndicator.classList.add("hidden");
+  pauseButton.classList.remove("hidden");
+  songTitle.classList.remove("hidden");
 
-  songTitle.classList.remove('hidden');
-  //   updateProgressBarWidth();
+  player.play();
 }
 
 function pausePlayback() {
-  loadingIndicator.classList.add('hidden');
-  pauseButton.classList.add('hidden');
-  playButton.classList.remove('hidden');
+  // loadingIndicator.classList.add("hidden");
+  pauseButton.classList.add("hidden");
+  playButton.classList.remove("hidden");
+
   player.pause();
-  isPlaying = false;
-  //   window.cancelInterval(progressBarUpdateHandle);
 }
 
-function togglePlayback() {
-  if (isPlaying) {
-    pausePlayback();
-  } else {
-    startPlayback();
-  }
-}
+// Handle audio finish.
+player.addEventListener("ended", () => {
+  // Re-set the UI back to not-playing mode, and hide the song list.
+  pausePlayback();
+  songTitle.classList.add("hidden");
 
-document.addEventListener('keypress', e => {
-  if (e.key === ' ') togglePlayback();
+  // Reset the progress bar, doing a quick fun little animation where it drops
+  // down out of view below the bottom of the screen.
+  progressBar.classList.add("reset");
+  progressBar.style.transform = "translateY(100%)";
+  setTimeout(() => {
+    progressBar.classList.remove("reset");
+    progressBar.style.transform = "translate(-100%)";
+  }, 100);
 });
 
-function updateProgressBarWidth() {
-  function setProgress(percentage) {
-    progressBar.style.width = `${percentage * 100}%`;
-    progress = percentage;
+// Animation handler for player progress bar.
+// CSS animation would probably be more performant. However, we need to be able
+// to pause/resume the animation, as well as coordinate with the audio player's
+// progress, so JavaScript animation is a better option. Hopefully using
+// "requestAnimationFrame" should mitigate the performance aspects.
+function animate() {
+  requestAnimationFrame(animate);
+  if (!player.paused) {
+    // Animate the progress bar from "translate(-100%)" to "translate(0%)".
+    // This is better than animating "width" property or "left", because
+    // changing "transform" doesn't trigger a re-layout.
+    const progress = player.currentTime / player.duration;
+    const translate = (1 - progress) * 100;
+    progressBar.style.transform = `translate(-${translate}%)`;
   }
-  const difference = targetProgress - progress;
-  if (difference < 0) {
-    // Somehow we overshot.
-    setProgress(targetProgress);
-  } else {
-    let increment = 0;
-    if (difference > 0.8) {
-      increment = 0.1;
-    } else if (difference > 0.5) {
-      increment = 0.04;
-    } else if (difference > 0.2) {
-      increment = 0.02;
-    } else if (difference > 0.01) {
-      increment = 0.005;
-    } else if (difference > 0.001) {
-      increment = 0.0005;
-    }
-    // } else if (difference > 0.0001) {
-    //   increment = 0.00005;
-    // }
-    console.log(increment);
-    const clamped = Math.max(0, Math.min(progress + increment, 1.0));
-    setProgress(clamped);
-  }
-  setTimeout(updateProgressBarWidth, 5);
 }
-
-updateProgressBarWidth();
+requestAnimationFrame(animate);

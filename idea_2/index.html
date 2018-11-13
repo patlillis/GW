@@ -7,29 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link href="../raleway.css" rel="stylesheet" />
-    <!--
-      <link rel="stylesheet" type="text/css" media="screen" href="glitch.css" />
-    -->
     <script defer src="main.js"></script>
   </head>
 
   <body>
-    <div class="glitch">
-      <div class="glitch-img"></div>
-      <!-- <div class="glitch-img"></div> -->
-    </div>
-
     <div class="outer-header">
       <div class="header"><img class="text" src="../text.png" /></div>
     </div>
 
     <div class="player-wrapper">
+      <!--
+        https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3
+      -->
       <audio
         id="player"
         class="hidden"
         src="../maxwell-morgan-county.wav"
         preload="auto"
       ></audio>
+
       <button id="play-button" class="control">
         <svg
           width="64"
@@ -58,30 +54,32 @@
         </svg>
       </button>
 
-      <div id="loading-indicator" class="control hidden">
-        <svg
-          width="64"
-          height="64"
-          viewBox="0 0 38 38"
-          xmlns="http://www.w3.org/2000/svg"
-          stroke="#fff"
-        >
-          <g fill="none" fill-rule="evenodd">
-            <g transform="translate(1 1)" stroke-width="2">
-              <path d="M36 18c0-9.94-8.06-18-18-18">
-                <animateTransform
-                  attributeName="transform"
-                  type="rotate"
-                  from="0 18 18"
-                  to="360 18 18"
-                  dur="1s"
-                  repeatCount="indefinite"
-                />
-              </path>
+      <!--
+        <div id="loading-indicator" class="control hidden">
+          <svg
+            width="64"
+            height="64"
+            viewBox="0 0 38 38"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="#fff"
+          >
+            <g fill="none" fill-rule="evenodd">
+              <g transform="translate(1 1)" stroke-width="2">
+                <path d="M36 18c0-9.94-8.06-18-18-18">
+                  <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 18 18"
+                    to="360 18 18"
+                    dur="1s"
+                    repeatCount="indefinite"
+                  />
+                </path>
+              </g>
             </g>
-          </g>
-        </svg>
-      </div>
+          </svg>
+        </div>
+      -->
 
       <div id="song-title" class="hidden"><p>Maxwell, Morgan County</p></div>
     </div>
@@ -147,6 +145,8 @@
       </a>
     </div>
 
-    <div id="song-progress-bar"></div>
+    <div id="song-progress-bar-wrapper">
+      <div id="song-progress-bar" style="transform: translate(-100%);"></div>
+    </div>
   </body>
 </html>
