@@ -4,6 +4,9 @@ const pauseButton = document.getElementById("pause-button");
 const songTitle = document.getElementById("song-title");
 const progressBar = document.getElementById("song-progress-bar");
 
+const mobileWindowWidth = 800;
+let previousWindowWidth;
+
 // Handle clicking on "Play" button.
 playButton.addEventListener("click", startPlayback);
 
@@ -19,6 +22,18 @@ document.addEventListener("keypress", e => {
   } else {
     pausePlayback();
   }
+});
+
+// Resizing to a small window hides the player controls, so go ahead and stop
+// playback. Otherwise there's music playing with no way for the user to stop
+// it, which can be annoying.
+window.addEventListener("resize", () => {
+  const newInnerWidth = window.innerWidth;
+  if (newInnerWidth <= mobileWidthPx && previousWindowWidth > mobileWidthPx) {
+    pausePlayback();
+  }
+
+  previousWindowWidth = newInnerWidth;
 });
 
 function startPlayback() {
