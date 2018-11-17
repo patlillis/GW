@@ -133,6 +133,10 @@ body {
 
 /* Medium size styling */
 @media (max-width: 1400px) {
+  .outer-header {
+    padding-top: 100px;
+  }
+
   .player-wrapper .control,
   .link-icon {
     height: 64px;
@@ -140,8 +144,7 @@ body {
   }
 
   .link {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 20px;
   }
 }
 
@@ -150,6 +153,10 @@ body {
   .player-wrapper,
   #song-progress-bar-wrapper {
     display: none;
+  }
+
+  .outer-header {
+    padding-top: 70px;
   }
 
   .link-wrapper {
