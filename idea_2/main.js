@@ -1,7 +1,6 @@
 const player = document.getElementById("player");
 const playButton = document.getElementById("play-button");
 const pauseButton = document.getElementById("pause-button");
-// const loadingIndicator = document.getElementById("loading-indicator");
 const songTitle = document.getElementById("song-title");
 const progressBar = document.getElementById("song-progress-bar");
 
@@ -24,7 +23,6 @@ document.addEventListener("keypress", e => {
 
 function startPlayback() {
   playButton.classList.add("hidden");
-  // loadingIndicator.classList.add("hidden");
   pauseButton.classList.remove("hidden");
   songTitle.classList.remove("hidden");
 
@@ -32,7 +30,6 @@ function startPlayback() {
 }
 
 function pausePlayback() {
-  // loadingIndicator.classList.add("hidden");
   pauseButton.classList.add("hidden");
   playButton.classList.remove("hidden");
 

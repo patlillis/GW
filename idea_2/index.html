@@ -16,9 +16,6 @@
     </div>
 
     <div class="player-wrapper">
-      <!--
-        https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3
-      -->
       <audio
         id="player"
         class="hidden"
@@ -27,120 +24,37 @@
       ></audio>
 
       <button id="play-button" class="control">
-        <svg
-          width="64"
-          height="64"
-          viewBox="0 0 1792 1792"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill="white"
-            d="M1576 927l-1328 738q-23 13-39.5 3t-16.5-36v-1472q0-26 16.5-36t39.5 3l1328 738q23 13 23 31t-23 31z"
-          />
-        </svg>
+        <svg><use xlink:href="../icons.svg#play"></use></svg>
       </button>
 
       <button id="pause-button" class="control hidden">
-        <svg
-          width="64"
-          height="64"
-          viewBox="0 0 1792 1792"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill="white"
-            d="M1664 192v1408q0 26-19 45t-45 19h-512q-26 0-45-19t-19-45v-1408q0-26 19-45t45-19h512q26 0 45 19t19 45zm-896 0v1408q0 26-19 45t-45 19h-512q-26 0-45-19t-19-45v-1408q0-26 19-45t45-19h512q26 0 45 19t19 45z"
-          />
-        </svg>
+        <svg><use xlink:href="../icons.svg#pause"></use></svg>
       </button>
-
-      <!--
-        <div id="loading-indicator" class="control hidden">
-          <svg
-            width="64"
-            height="64"
-            viewBox="0 0 38 38"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="#fff"
-          >
-            <g fill="none" fill-rule="evenodd">
-              <g transform="translate(1 1)" stroke-width="2">
-                <path d="M36 18c0-9.94-8.06-18-18-18">
-                  <animateTransform
-                    attributeName="transform"
-                    type="rotate"
-                    from="0 18 18"
-                    to="360 18 18"
-                    dur="1s"
-                    repeatCount="indefinite"
-                  />
-                </path>
-              </g>
-            </g>
-          </svg>
-        </div>
-      -->
 
       <div id="song-title" class="hidden"><p>Maxwell, Morgan County</p></div>
     </div>
 
     <div class="link-wrapper">
       <a class="link" href="https://spotify.com" target="_blank">
-        <svg
-          id="spotify-mask"
-          class="link-icon"
-          viewBox="0 0 64 64"
-          width="100%"
-          height="100%"
-        >
-          <path
-            fill="white"
-            d="M39,37.7c-4.2-2.6-9.4-3.2-15.5-1.8c-0.5,0.1-0.9,0.7-0.8,1.2c0.1,0.5,0.7,0.9,1.2,0.7c5.6-1.3,10.3-0.8,14.1,1.5 c0.5,0.3,1.1,0.1,1.4-0.3C39.6,38.6,39.5,38,39,37.7z M40.9,33c-4.9-3-12.2-3.9-18-2.1c-0.7,0.2-1,0.9-0.8,1.6 c0.2,0.7,0.9,1,1.6,0.8c5.1-1.5,11.6-0.8,15.9,1.9c0.6,0.4,1.4,0.2,1.7-0.4C41.7,34.1,41.5,33.4,40.9,33z M0,0v64h64V0H0z M32,48 c-8.8,0-16-7.2-16-16c0-8.8,7.2-16,16-16c8.8,0,16,7.2,16,16C48,40.8,40.8,48,32,48z M43,27.6c-5.9-3.5-15.3-3.9-21-2.1 c-0.8,0.2-1.2,1.1-1,1.9c0.2,0.8,1.1,1.2,1.9,1c4.9-1.5,13.4-1.2,18.6,1.9c0.7,0.4,1.6,0.2,2.1-0.5C43.9,29,43.7,28,43,27.6z"
-          ></path>
+        <svg class="link-icon">
+          <use xlink:href="../icons.svg#spotify"></use>
         </svg>
       </a>
       <a class="link" href="https://soundcloud.com" target="_blank">
-        <svg
-          id="soundcloud-mask"
-          class="link-icon"
-          viewBox="0 0 64 64"
-          width="100%"
-          height="100%"
-        >
-          <path
-            fill="white"
-            d="M0,0v64h64V0H0z M18.5,36.3c0,0.7-0.6,1.2-1.2,1.2c-0.7,0-1.2-0.6-1.2-1.2v-4.9c0-0.6,0.6-1.1,1.2-1.1 c0.7,0,1.2,0.5,1.2,1.1V36.3z M23.4,37.5c0,0.7-0.6,1.2-1.2,1.2S21,38.2,21,37.5V29c0-0.6,0.6-1.1,1.2-1.1s1.2,0.5,1.2,1.1V37.5z  M28.4,37.5c0,0.7-0.6,1.2-1.2,1.2c-0.7,0-1.2-0.6-1.2-1.2V26.2c0-0.6,0.6-1.1,1.2-1.1c0.7,0,1.2,0.5,1.2,1.1V37.5z M43.6,38.7 c0,0-12.1,0-12.2,0c-0.3,0-0.5-0.2-0.5-0.5V24.3c0-0.3,0.1-0.4,0.4-0.5c0.9-0.3,1.8-0.5,2.8-0.5c4,0,7.4,3.1,7.7,7.1 c0.5-0.2,1.1-0.3,1.7-0.3c2.4,0,4.4,2,4.4,4.4C48,36.8,46,38.7,43.6,38.7z"
-          ></path>
+        <svg class="link-icon">
+          <use xlink:href="../icons.svg#soundcloud"></use>
         </svg>
       </a>
 
       <a class="link" href="https://bandcamp.com" target="_blank">
-        <svg
-          id="bandcamp-mask"
-          class="link-icon"
-          viewBox="0 0 496 512"
-          width="100%"
-          height="100%"
-        >
-          <path
-            fill="white"
-            d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm48.2 326.1h-181L199.9 178h181l-84.7 156.1z"
-          ></path>
+        <svg class="link-icon">
+          <use xlink:href="../icons.svg#soundcloud"></use>
         </svg>
       </a>
 
       <a class="link" href="https://facebook.com" target="_blank">
-        <svg
-          id="facebook-link"
-          class="link-icon"
-          viewBox="0 0 64 64"
-          width="100%"
-          height="100%"
-        >
-          <path
-            fill="white"
-            d="M0,0v64h64V0H0z M39.6,22l-2.8,0c-2.2,0-2.6,1.1-2.6,2.6V28h5.3l-0.7,5.3h-4.6V47h-5.5V33.3H24V28h4.6V24 c0-4.6,2.8-7,6.9-7c2,0,3.6,0.1,4.1,0.2V22z"
-          ></path>
+        <svg class="link-icon">
+          <use xlink:href="../icons.svg#facebook"></use>
         </svg>
       </a>
     </div>

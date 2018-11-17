@@ -53,6 +53,12 @@ body {
   cursor: pointer;
 }
 
+.player-wrapper .control svg {
+  height: 100%;
+  width: 100%;
+  fill: white;
+}
+
 #song-title {
   font-family: "Raleway", sans-serif;
   color: white;
@@ -109,6 +115,7 @@ body {
   height: 64px;
   width: 64px;
   border-radius: 50%;
+  fill: white;
 }
 
 .link::after {
