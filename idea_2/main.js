@@ -1,21 +1,21 @@
-const player = document.getElementById("player");
-const playButton = document.getElementById("play-button");
-const pauseButton = document.getElementById("pause-button");
-const songTitle = document.getElementById("song-title");
-const progressBar = document.getElementById("song-progress-bar");
+const player = document.getElementById('player');
+const playButton = document.getElementById('play-button');
+const pauseButton = document.getElementById('pause-button');
+const songTitle = document.getElementById('song-title');
+const progressBar = document.getElementById('song-progress-bar');
 
 const mobileWindowWidth = 800;
 let previousWindowWidth;
 
 // Handle clicking on "Play" button.
-playButton.addEventListener("click", startPlayback);
+playButton.addEventListener('click', startPlayback);
 
 // Handle clicking on "Pause" button.
-pauseButton.addEventListener("click", pausePlayback);
+pauseButton.addEventListener('click', pausePlayback);
 
 // Handle pressing the spacebar to toggle playback.
-document.addEventListener("keypress", e => {
-  if (e.key !== " ") return;
+document.addEventListener('keypress', e => {
+  if (e.key !== ' ') return;
 
   if (player.paused) {
     startPlayback();
@@ -27,9 +27,12 @@ document.addEventListener("keypress", e => {
 // Resizing to a small window hides the player controls, so go ahead and stop
 // playback. Otherwise there's music playing with no way for the user to stop
 // it, which can be annoying.
-window.addEventListener("resize", () => {
+window.addEventListener('resize', () => {
   const newInnerWidth = window.innerWidth;
-  if (newInnerWidth <= mobileWidthPx && previousWindowWidth > mobileWidthPx) {
+  if (
+    newInnerWidth <= mobileWindowWidth &&
+    previousWindowWidth > mobileWindowWidth
+  ) {
     pausePlayback();
   }
 
@@ -37,33 +40,33 @@ window.addEventListener("resize", () => {
 });
 
 function startPlayback() {
-  playButton.classList.add("hidden");
-  pauseButton.classList.remove("hidden");
-  songTitle.classList.remove("hidden");
+  playButton.classList.add('hidden');
+  pauseButton.classList.remove('hidden');
+  songTitle.classList.remove('hidden');
 
   player.play();
 }
 
 function pausePlayback() {
-  pauseButton.classList.add("hidden");
-  playButton.classList.remove("hidden");
+  pauseButton.classList.add('hidden');
+  playButton.classList.remove('hidden');
 
   player.pause();
 }
 
 // Handle audio finish.
-player.addEventListener("ended", () => {
+player.addEventListener('ended', () => {
   // Re-set the UI back to not-playing mode, and hide the song list.
   pausePlayback();
-  songTitle.classList.add("hidden");
+  songTitle.classList.add('hidden');
 
   // Reset the progress bar, doing a quick fun little animation where it drops
   // down out of view below the bottom of the screen.
-  progressBar.classList.add("reset");
-  progressBar.style.transform = "translateY(100%)";
+  progressBar.classList.add('reset');
+  progressBar.style.transform = 'translateY(100%)';
   setTimeout(() => {
-    progressBar.classList.remove("reset");
-    progressBar.style.transform = "translate(-100%)";
+    progressBar.classList.remove('reset');
+    progressBar.style.transform = 'translate(-100%)';
   }, 100);
 });
 
