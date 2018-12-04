@@ -193,7 +193,7 @@ body {
 
 /* Small (mobile) size styling */
 
-@media (max-width: 800px) {
+@media (max-width: 767px) {
   .player-wrapper,
   #song-progress-bar-wrapper {
     display: none;
@@ -209,5 +209,27 @@ body {
   .link-icon {
     height: 64px;
     width: 64px;
+  }
+  .contact {
+    padding: 32px 0;
+  }
+  .contact-details {
+    text-align: center;
+  }
+  .contact-details a {
+    text-decoration: underline;
+  }
+}
+
+/* Super-small size style */
+
+@media (max-width: 400px) {
+  .link-wrapper {
+    left: 0;
+    right: 0;
+  }
+  .link {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
