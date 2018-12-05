@@ -17,7 +17,7 @@ body {
   height: 100%;
   max-width: 100vw;
   overflow-x: hidden;
-  background-image: url(../images/cover.jpg);
+  background-image: url(images/cover.jpg);
   background-size: cover;
   background-position: 50% 50%;
   position: relative;
@@ -140,7 +140,7 @@ body {
 /** Styles for "contact" section. */
 
 .contact {
-  background-image: url(../images/twinkle_twinkle_@2X.png);
+  background-image: url(images/twinkle_twinkle_@2X.png);
   background-color: rgba(255, 255, 255, 0.5);
   background-blend-mode: hard-light;
   background-repeat: repeat;
