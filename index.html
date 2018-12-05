@@ -17,12 +17,10 @@
       </div>
 
       <div class="player-wrapper">
-        <audio
-          id="player"
-          class="hidden"
-          src="maxwell-morgan-county.wav"
-          preload="auto"
-        ></audio>
+        <audio id="player" class="hidden" preload="auto">
+          <source src="maxwell-morgan-county.mp3" type="audio/mp3" />
+          <source src="maxwell-morgan-county.ogg" type="audio/ogg" />
+        </audio>
 
         <button id="play-button" class="control">
           <svg><use xlink:href="icons.svg#play"></use></svg>
