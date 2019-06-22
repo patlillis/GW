@@ -36,8 +36,7 @@ body {
 }
 
 .text {
-  max-width: 100%;
-  width: 700px;
+  width: 767px;
 }
 
 .player-wrapper {
@@ -167,20 +166,25 @@ body {
   .outer-header {
     padding-top: 100px;
   }
+
   .player-wrapper .control,
   .link-icon {
     height: 64px;
     width: 64px;
   }
+
   #song-title {
     font-size: 20px;
   }
+
   .link {
     margin: 20px;
   }
+
   .contact {
     padding: 40px;
   }
+
   .contact-details {
     font-size: 16px;
   }
@@ -189,25 +193,34 @@ body {
 /* Small (mobile) size styling */
 
 @media (max-width: 767px) {
+  .text {
+    width: 100%;
+  }
+
   .player-wrapper,
   #song-progress-bar-wrapper {
     display: none;
   }
+
   .outer-header {
     padding-top: 70px;
   }
+
   .link-wrapper {
     left: 20px;
     justify-content: space-evenly;
   }
+
   .player-wrapper .control,
   .link-icon {
     height: 64px;
     width: 64px;
   }
+
   .contact {
     padding: 32px 0;
   }
+
   .contact-details {
     text-align: center;
   }
@@ -220,6 +233,7 @@ body {
     left: 0;
     right: 0;
   }
+
   .link {
     margin-left: 0;
     margin-right: 0;
